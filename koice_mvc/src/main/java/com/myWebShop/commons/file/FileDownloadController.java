@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -35,7 +36,7 @@ public class FileDownloadController {
 		response.setContentType("application/octet-stream");
 		response.setHeader("Cache-Control","no-cache");
 		response.setHeader("Content-Transfer-Encoding", "binary");
-		response.addHeader("Content-disposition", "attachment; fileName="+fileName);
+		response.addHeader("Content-disposition", "attachment; fileName="+ URLEncoder.encode(fileName,"UTF-8"));
 		FileInputStream in=new FileInputStream(image); 
 		byte[] buffer=new byte[1024*8];
 		
