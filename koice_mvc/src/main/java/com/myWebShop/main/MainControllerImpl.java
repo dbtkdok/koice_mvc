@@ -44,7 +44,7 @@ public class MainControllerImpl implements MainController{
 		ModelAndView mav = new ModelAndView();
 		
 		String viewName=(String)request.getAttribute("viewName");
-		System.out.println("viewName :::: " + viewName);
+		//System.out.println("viewName :::: " + viewName);
 		mav.setViewName(viewName);
 		
 		return mav;
@@ -69,10 +69,10 @@ public class MainControllerImpl implements MainController{
 		ResponseEntity<String> r = null;
 		
 		request.setCharacterEncoding("utf-8");
-		System.out.println(member.getMember_id());
+		//System.out.println(member.getMember_id());
 		ModelAndView mav = new ModelAndView();
 		memberVO = memberService.login(member);
-		System.out.println(memberVO);
+		//System.out.println(memberVO);
 		if(memberVO != null) {
 			HttpSession session = request.getSession();
 		    session.setAttribute("member", memberVO);
@@ -80,7 +80,7 @@ public class MainControllerImpl implements MainController{
 		    String action = (String)session.getAttribute("action");
 		    session.removeAttribute("action");
 		    
-		    mav.setViewName("dashboard");
+		    mav.setViewName("redirect:/dashboard.do");
 		} else {
 			   mav.addObject("result", "fail");
 			   mav.setViewName("login");
