@@ -12,4 +12,6 @@ public interface MemberDAO {
 	public MemberVO login(MemberVO member) throws DataAccessException;
 
 	public void addMember(MemberVO member) throws DataAccessException;
+	
+	public void addFiles(Map<String, Object> param) throws DataAccessException;
 }

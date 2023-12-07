@@ -10,5 +10,6 @@ public interface MemberService {
 	public MemberVO login(MemberVO member) throws Exception;
 
 	public void addMember(MemberVO member) throws Exception;
-
+	
+	public void addFiles(Map<String, Object> param) throws Exception;
 }

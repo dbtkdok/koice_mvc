@@ -26,5 +26,11 @@ public class MemberServiceImpl implements MemberService{
 		
 		memberDAO.addMember(member);
 	}
+
+	@Override
+	public void addFiles(Map<String, Object> param) throws Exception {
+		// TODO Auto-generated method stub
+		memberDAO.addFiles(param);
+	}
 	
 }

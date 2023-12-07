@@ -30,4 +30,11 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.insert("mapper.member.addMember", member);;
 	}
 
+
+	@Override
+	public void addFiles(Map<String, Object> param) throws DataAccessException {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.member.addFiles", param);
+	}
+
 }
