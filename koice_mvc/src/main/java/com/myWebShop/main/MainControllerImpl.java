@@ -44,7 +44,6 @@ public class MainControllerImpl implements MainController{
 		ModelAndView mav = new ModelAndView();
 		
 		String viewName=(String)request.getAttribute("viewName");
-		//System.out.println("viewName :::: " + viewName);
 		mav.setViewName(viewName);
 		
 		return mav;
@@ -55,9 +54,14 @@ public class MainControllerImpl implements MainController{
 	public ModelAndView login(MemberVO member, RedirectAttributes rAttr, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		
+		HttpSession session = request.getSession();
 		String viewName=(String)request.getAttribute("viewName");
-		mav.setViewName(viewName);
+		
+		if(session.getAttribute("member") != null) {
+			mav.setViewName("redirect:/dashboard.do");
+		} else {
+			mav.setViewName(viewName);
+		}
 		
 		return mav;
 	}
@@ -86,6 +90,19 @@ public class MainControllerImpl implements MainController{
 			   mav.setViewName("login");
 		}
 		r = new ResponseEntity<String>(HttpStatus.OK);
+		
+		return mav;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/logout.dw", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView logout(MemberVO member, RedirectAttributes rAttr, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		ModelAndView mav = new ModelAndView();
+		
+		session.removeAttribute("member");
+		mav.setViewName("redirect:/");
 		
 		return mav;
 	}
