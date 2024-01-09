@@ -77,6 +77,7 @@
 		insert into FN_POSTS_FILE(
 			file_no
 			,file_name
+			,origin_file_NM
 			,file_path
 			,file_type
 			,file_size
@@ -84,6 +85,7 @@
 		)values(
 			#{file_no},
 			#{file_name},
+			#{origin_file_NM},
 			#{file_path},
 			#{file_type},
 			#{file_size},

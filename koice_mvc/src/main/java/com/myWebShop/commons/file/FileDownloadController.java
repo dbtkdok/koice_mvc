@@ -31,8 +31,8 @@ public class FileDownloadController {
 	@Autowired
 	MemberService memberService;
 	
-	private static String CURR_IMAGE_REPO_PATH = "/Users/leeyusang/Desktop/"; // mac
-	//private static String CURR_IMAGE_REPO_PATH = /tomcat/webapps/files"; 실제서버용  
+	//private static String CURR_IMAGE_REPO_PATH = "/Users/leeyusang/Desktop/"; // mac
+	private static String CURR_IMAGE_REPO_PATH = "/tomcat/webapps/files/"; //실제서버용  
 	
 	@RequestMapping("/download")
 	protected void download(@RequestParam("fileName") String fileName,
@@ -64,23 +64,29 @@ public class FileDownloadController {
     public String fileUploadMultiple(@RequestParam("uploadFileMulti") ArrayList<MultipartFile> files, Model model) throws Exception, IOException {
         String savedFileName = "";
         
+        
         // 1. 파일 저장 경로 설정 : 실제 서비스되는 위치(프로젝트 외부에 저장)
-        String uploadPath = "/Users/leeyusang/Desktop/";
+        String uploadPath = "/Users/leeyusang/Desktop/data_files/";
         // 여러 개의 원본 파일을 저장할 리스트 생성
         ArrayList<String> originalFileNameList = new ArrayList<String>();
         for(MultipartFile file : files) {
         	String originalFileName = file.getOriginalFilename();
             String extension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+            UUID uuid = UUID.randomUUID();
+            savedFileName = uuid.toString() + "." + extension;
+            
         	Map<String, Object> map = new HashMap<String, Object>();
         	map.put("file_type", extension);
+        	map.put("file_no", "FILES");
         	map.put("file_size", file.getSize());
-        	map.put("file_name", originalFileName);
+        	map.put("file_name", savedFileName);
+        	map.put("origin_file_NM", originalFileName);
         	map.put("file_path", CURR_IMAGE_REPO_PATH);
         	
-        	System.out.println("map ::::: " + map);
+        	//System.out.println("map ::::: " + map);
         	memberService.addFiles(map);
             // 5. 파일 생성
-            File file1 = new File(uploadPath + originalFileName);
+        	File file1 = new File(uploadPath + savedFileName);
             // 6. 서버로 전송
             file.transferTo(file1);
         }
