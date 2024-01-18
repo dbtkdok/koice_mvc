@@ -29,4 +29,18 @@
 		<put-attribute name="left_menu" value="/WEB-INF/views/common/leftSite_dashboard.jsp" />
 	</definition>
 	
+	<definition name="schedule" extends="baseLayout2">
+		<put-attribute name="title" value="코이스:KOICE - 컨설턴트 전용 페이지" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header_dashboard.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/schedule.jsp" />
+		<put-attribute name="left_menu" value="/WEB-INF/views/common/leftSite_dashboard.jsp" />
+	</definition>
+	
+	<definition name="consultation" extends="baseLayout2">
+		<put-attribute name="title" value="코이스:KOICE - 컨설턴트 전용 페이지" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header_dashboard.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/consultation.jsp" />
+		<put-attribute name="left_menu" value="/WEB-INF/views/common/leftSite_dashboard.jsp" />
+	</definition>
+	
 </tiles-definitions>

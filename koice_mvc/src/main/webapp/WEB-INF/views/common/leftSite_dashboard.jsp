@@ -40,7 +40,7 @@
 		       <span class="hide-menu">프로그램 관라</span>
 		     </li>
 		     <li class="sidebar-item">
-		       <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+		       <a class="sidebar-link" href="/schedule.do" aria-expanded="false">
 		         <span>
 		           <i class="ti ti-article"></i>
 		         </span>
@@ -56,7 +56,7 @@
 		       </a>
 		     </li>
 		     <li class="sidebar-item">
-		       <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+		       <a class="sidebar-link" href="/consultation.do" aria-expanded="false">
 		         <span>
 		           <i class="ti ti-cards"></i>
 		         </span>
