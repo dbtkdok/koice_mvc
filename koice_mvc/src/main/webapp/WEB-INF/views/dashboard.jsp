@@ -367,20 +367,6 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="container">
-      <h3>파일 업로드 폼 입니다.</h3>
-      <form action="upload" method="post" enctype="multipart/form-data">
-         <div>
-            <label for="title">제목</label>
-            <input type="text" name="title" id="title"/>
-         </div>
-         <div>
-            <label for="myFile">첨부파일</label>
-            <input type="file" name="myFile" id="myFile"/>
-         </div>
-         <button type="submit">업로드</button>
-      </form>
-   </div>
 	
 	<div class="py-6 px-6 text-center">
 	  <p class="mb-0 fs-4">Developed by <a href="http://koice.org/" target="_blank" class="pe-1 text-primary text-decoration-underline">koice.org</a></p>
