@@ -50,13 +50,35 @@
 		                    });
 		                }
 		            }, 1000);
-		            
 		        }
-		        
 		    })
 		
 		});
-  	
+  		function fnAddText() {
+  			var text = $('#vd_text').val();
+  			
+  			if(text == "") {
+	            alert("먼저 파도에 적을 내용을 입력해주세요.");
+	        } else {
+	        	var param= {body: text}; 
+	        	
+	  			$.ajax({ 
+		  			url: "${contextPath}/addTexts.do",  //url
+		  			type: "post", // 타입
+		  			dataType:"json", //받아올 형태 지정 
+		  			data : param, // 파라미터 데이터
+		  			//data : $("#form1").serialize(), //파라미터형태로 전송할 경우
+		  			success: function(data){       //성공시 data라는 변수에 리턴값이 매칭됨 오브젝트형으로 리턴시 개별 파싱해야됨 
+		  			   alert("당신의 이야기가 등록되었습니다!"); 
+		  			   location.reload();
+		  			},complete: function(data){
+		  			   //실패 했었도 완료가 되었을때..
+		  			},error: function (request, status, error) {
+		  			   alert("에러"); 
+		  			} 
+	  			});
+	        }
+  		}
 	</script>
   
 </head>
@@ -69,7 +91,7 @@
     <div class="msform">
         <ul id="step_3" class="progressbar" style="display: flex;">
             <input id="vd_text" type="text" placeholder="설 연휴 동안이나 살아오면서 들었던 최악의 말은 무엇인가요? 클릭 후 작성해보세요." value="">
-            <button type="button" id="vd_btn" data-toggle="modal" data-target="#exampleModal"></button>
+            <button type="button" id="vd_btn" onclick="fnAddText()"></button>
         </ul>
     </div>
 	<div>

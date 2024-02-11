@@ -44,4 +44,9 @@ public class MemberDAOImpl implements MemberDAO{
 		return memberid;
 	}
 	
+	@Override
+	public void addTexts(Map<String, Object> param) throws DataAccessException {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.member.addTexts", param);
+	}
 }

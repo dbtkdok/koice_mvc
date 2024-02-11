@@ -1,6 +1,7 @@
 package com.myWebShop.main;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -79,6 +81,16 @@ public class MainControllerImpl implements MainController{
 		}
 		
 		return mav;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/addTexts.do", method = {RequestMethod.POST})
+	public int addTexts(@RequestParam Map<String, Object> param, RedirectAttributes rAttr, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		System.out.println(param);
+		memberService.addTexts(param);
+		
+		return 0;
 	}
 	
 	@ResponseBody

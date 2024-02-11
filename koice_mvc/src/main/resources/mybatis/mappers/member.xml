@@ -104,4 +104,16 @@
 		]]>
 	</select>
 	
+	<insert id="addTexts" parameterType="hashMap">
+		insert into PADO_TEXT(
+			body
+			,STATUS
+			,created_at
+		)values(
+			#{body},
+			'',
+			NOW()
+		)
+	</insert>
+	
 </mapper>

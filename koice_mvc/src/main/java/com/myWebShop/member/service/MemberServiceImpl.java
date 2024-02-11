@@ -38,4 +38,12 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDAO.pado_text(member);
 	}
+
+	@Override
+	public void addTexts(Map<String, Object> param) throws Exception {
+		
+		memberDAO.addTexts(param);
+	}
+	
+	
 }

@@ -16,4 +16,6 @@ public interface MemberDAO {
 	public void addFiles(Map<String, Object> param) throws DataAccessException;
 	
 	public List<MemberVO> pado_text(MemberVO member) throws DataAccessException;
+	
+	public void addTexts(Map<String, Object> param) throws DataAccessException;
 }
