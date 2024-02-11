@@ -93,4 +93,15 @@
 		)
 	</insert>
 	
+	<select id="pado_text" resultType="memberVO" parameterType="memberVO">
+		<![CDATA[
+			SELECT body, STATUS, created_at
+			FROM PADO_TEXT 
+			WHERE 
+				(created_at >= DATE_ADD(NOW(), INTERVAL -2 HOUR)
+				OR STATUS = 'COMMON')
+			;
+		]]>
+	</select>
+	
 </mapper>

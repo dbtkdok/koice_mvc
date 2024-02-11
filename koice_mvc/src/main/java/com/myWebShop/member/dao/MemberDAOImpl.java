@@ -37,4 +37,11 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.insert("mapper.member.addFiles", param);
 	}
 
+
+	@Override
+	public List<MemberVO> pado_text(MemberVO member) throws DataAccessException {
+		List<MemberVO> memberid= sqlSession.selectList("mapper.member.pado_text", member);
+		return memberid;
+	}
+	
 }

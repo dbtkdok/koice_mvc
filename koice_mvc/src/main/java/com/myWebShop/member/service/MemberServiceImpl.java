@@ -32,5 +32,10 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		memberDAO.addFiles(param);
 	}
-	
+
+	@Override
+	public List<MemberVO> pado_text(MemberVO member) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.pado_text(member);
+	}
 }

@@ -1,5 +1,7 @@
 package com.myWebShop.main;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -45,6 +47,19 @@ public class MainControllerImpl implements MainController{
 		
 		String viewName=(String)request.getAttribute("viewName");
 		mav.setViewName(viewName);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/pado_dears_msg.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public  ModelAndView comMainFrame_pado(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		
+		String viewName=(String)request.getAttribute("viewName");
+		mav.setViewName(viewName);
+		
+		List<MemberVO> memberVO = memberService.pado_text(member);
+		mav.addObject("list", memberVO);
 		
 		return mav;
 	}

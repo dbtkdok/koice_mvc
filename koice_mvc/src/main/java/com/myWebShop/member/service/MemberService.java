@@ -12,4 +12,6 @@ public interface MemberService {
 	public void addMember(MemberVO member) throws Exception;
 	
 	public void addFiles(Map<String, Object> param) throws Exception;
+	
+	public List<MemberVO> pado_text(MemberVO member) throws Exception;
 }

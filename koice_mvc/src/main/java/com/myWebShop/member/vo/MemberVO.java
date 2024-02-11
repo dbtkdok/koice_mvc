@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 @Component("memberVO")
 public class MemberVO {
 	private String id;
+	private String text_id;
+	private String body;
+	private String status;
 	private String member_id;
 	private String member_pw;
 	private String member_name;
@@ -200,6 +203,24 @@ public class MemberVO {
 	}
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;
+	}
+	public String getText_id() {
+		return text_id;
+	}
+	public void setText_id(String text_id) {
+		this.text_id = text_id;
+	}
+	public String getBody() {
+		return body;
+	}
+	public void setBody(String body) {
+		this.body = body;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
 
