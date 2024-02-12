@@ -23,42 +23,12 @@
 		      }
 		    });
 		
-		    $('#exampleModal').on('shown.bs.modal', function () {
-		        $("#vd_modal").removeClass("vd_box_show");
-		        var text = $("#vd_text").val();
-		        
-		        if(text == "") {
-		            $('#exampleModal').modal('hide');
-		            alert("먼저 파도에 적을 내용을 입력해주세요.");
-		        } else {
-		            $("#vd_text").val("");
-		            $("#vd_modal").addClass("vd_box_show");
-		            $("#pado_modal").text(text);
-		            $("#pado_modal").addClass("vd_box_back");
-		            
-		            var time = 1;
-		            var timer = setInterval(function() {
-		                time = time + 1;
-		                if(time == 5) {
-		                    //$("#pado_modal").text("");
-		                    $("#pado_modal").fadeOut(2000, "linear", function(){
-		                        $("#pado_modal").text("");
-		                        time = 1;
-		                        clearInterval(timer);
-		                        $('#exampleModal').modal('hide');
-		                        $("#pado_modal").show();
-		                    });
-		                }
-		            }, 1000);
-		        }
-		    })
-		
 		});
   		function fnAddText() {
   			var text = $('#vd_text').val();
   			
   			if(text == "") {
-	            alert("먼저 파도에 적을 내용을 입력해주세요.");
+  				 $('#exampleModal').modal('show');
 	        } else {
 	        	var param= {body: text}; 
 	        	
@@ -69,7 +39,7 @@
 		  			data : param, // 파라미터 데이터
 		  			//data : $("#form1").serialize(), //파라미터형태로 전송할 경우
 		  			success: function(data){       //성공시 data라는 변수에 리턴값이 매칭됨 오브젝트형으로 리턴시 개별 파싱해야됨 
-		  			   alert("당신의 이야기가 등록되었습니다!"); 
+		  			   //alert("당신의 이야기가 등록되었습니다!"); 
 		  			   location.reload();
 		  			},complete: function(data){
 		  			   //실패 했었도 완료가 되었을때..
@@ -90,14 +60,14 @@
     <audio src="${contextPath}/resources/static/video/wave_soundes.mp3" autoplay loop></audio>
     <div class="msform">
         <ul id="step_3" class="progressbar" style="display: flex;">
-            <input id="vd_text" type="text" placeholder="설 연휴 동안이나 살아오면서 들었던 최악의 말은 무엇인가요? 클릭 후 작성해보세요." value="">
+            <input id="vd_text" type="text" onKeypress="javascript:if(event.keyCode==13) {fnAddText()}" placeholder="설 연휴 동안이나 살아오면서 들었던 최악의 말은 무엇인가요? 클릭 후 작성해보세요." value="">
             <button type="button" id="vd_btn" onclick="fnAddText()"></button>
         </ul>
     </div>
 	<div>
 	    <div class="mode_box">
 	    	<div>
-	    		<ul>
+	    		<ul id="mode_box_ui" style="margin-bottom: 0;">
 	    			<c:forEach items="${list}" var="ii" >
 						<li class="mode_box_li">${ii.body}</li>
 					</c:forEach>
@@ -106,9 +76,17 @@
 	    </div>
     </div>
     
-    <h3>
-    	
-    </h3>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="background: #000000a3;color: #fff;box-shadow: 1px 1px #000;">
+            <div id="vd_modal" class="modal-content">
+            <div class="modal-header">
+                
+            <div id="pado_modal" class="modal-body" style="color: #fff;">
+                먼저 파도에 적을 내용을 입력해주세요.
+            </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
