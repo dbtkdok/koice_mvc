@@ -745,11 +745,14 @@ body {
     width: 58%;
     position: absolute;
     top: 10%;
-    background: #ffffff57;
+    /* background: #ffffff57; */
+    background-image: url("/resources/static/img//background_3d_dears.png");
+    background-size: cover;
+    background-repeat: round;
     left: 20%;
     border-radius: 8px;
     padding: 10px;
-    color: #eee;
+    color: #0B0B3B;
     box-shadow: 2px 3px 10px 2px #000;
 }
 
