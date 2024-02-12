@@ -738,7 +738,11 @@ body {
     padding: 25px;
     border: 0;
     margin-bottom: 10px;
-    background: #0B0B3B;
+    /* background-color: #ffffff; */
+    background-image: url("/resources/static/img/enter.png");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: right;
 }
 
 .vd_box_show {
