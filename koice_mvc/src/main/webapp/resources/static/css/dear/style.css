@@ -27,6 +27,9 @@ body {
     font-family: MinSansBK;
     margin: 0;
     min-width: 1250px;
+    background-image: url("/resources/static/img//background_3d_dears.png");
+    background-size: cover;
+    background-repeat: round;
 }
 
 .panels {
@@ -724,8 +727,8 @@ body {
 
 #vd_text {
     border-radius: 15px 0px 0px 15px;
-    background-color: #0000008f;
-    color: #ccc;
+    background-color: #b3b3b3;
+    color: #000;
     font-weight: bold;
     font-size: 15px;
 }
@@ -745,10 +748,7 @@ body {
     width: 58%;
     position: absolute;
     top: 10%;
-    /* background: #ffffff57; */
-    background-image: url("/resources/static/img//background_3d_dears.png");
-    background-size: cover;
-    background-repeat: round;
+    background: #ffffff57;
     left: 20%;
     border-radius: 8px;
     padding: 10px;
