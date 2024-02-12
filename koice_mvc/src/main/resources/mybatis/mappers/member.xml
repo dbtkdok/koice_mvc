@@ -98,7 +98,7 @@
 			SELECT body, STATUS, created_at
 			FROM PADO_TEXT 
 			WHERE 
-				(created_at >= DATE_ADD(NOW(), INTERVAL -2 HOUR)
+				(created_at >= DATE_ADD(NOW(), INTERVAL -30 MINUTE)
 				OR STATUS = 'COMMON')
 			;
 		]]>
