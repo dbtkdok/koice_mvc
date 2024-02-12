@@ -736,8 +736,9 @@ body {
 #vd_btn {
     border-radius: 0px 8px 8px 0px;
     padding: 25px;
-    border: 1px solid #ccc;
+    border: 0;
     margin-bottom: 10px;
+    background: #0B0B3B;
 }
 
 .vd_box_show {
