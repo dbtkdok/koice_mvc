@@ -62,7 +62,7 @@
      -->
     <div class="msform">
         <ul id="step_3" class="progressbar" style="display: flex;">
-            <input id="vd_text" type="text" onKeypress="javascript:if(event.keyCode==13) {fnAddText()}" placeholder="설 연휴 동안이나 살아오면서 들었던 최악의 말은 무엇인가요? 클릭 후 작성해보세요." value="">
+            <input id="vd_text" type="text" onKeypress="javascript:if(event.keyCode==13) {fnAddText()}" placeholder="살아오면서 들었던 최악의 말은 무엇인가요? 클릭 후 작성해보세요." value="">
             <button type="button" id="vd_btn" onclick="fnAddText()"></button>
         </ul>
     </div>

@@ -24,7 +24,7 @@
 }
 
 body {
-    font-family: MinSansBK;
+    font-family: MinSansLg;
     margin: 0;
     min-width: 1250px;
     background-image: url("/resources/static/img//background_3d_dears.png");
@@ -274,7 +274,7 @@ body {
     margin-bottom: 10px;
     width: 100%;
     box-sizing: border-box;
-    font-family: montserrat;
+    font-family: 'MinSansLg';
     color: #2C3E50;
     font-size: 13px;
 }
