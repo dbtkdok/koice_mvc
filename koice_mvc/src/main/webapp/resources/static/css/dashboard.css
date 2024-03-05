@@ -5395,6 +5395,16 @@ textarea.form-control-lg{
     vertical-align:baseline;
     border-radius:var(--bs-badge-border-radius)
 }
+
+.br_gray {
+    border: 1px solid #eee;
+}
+.word_text {
+    white-space: nowrap;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
 .badge:empty{
     display:none
 }
@@ -10066,7 +10076,7 @@ textarea.form-control-lg{
     border-radius:var(--bs-border-radius-sm)!important
 }
 .rounded-2{
-    border-radius:var(--bs-border-radius)!important
+    border-radius:var(--bs-border-radius)!important;
 }
 .rounded-3{
     border-radius:var(--bs-border-radius-lg)!important

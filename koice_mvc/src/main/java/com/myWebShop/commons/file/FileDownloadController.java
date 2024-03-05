@@ -32,20 +32,23 @@ public class FileDownloadController {
 	MemberService memberService;
 	
 	//private static String CURR_IMAGE_REPO_PATH = "/Users/leeyusang/Desktop/"; // mac
-	private static String CURR_IMAGE_REPO_PATH = "/tomcat/webapps/files/"; //실제서버용  
+	private static String CURR_IMAGE_REPO_PATH = "/resources/static/files/"; //실제서버용  
 	
 	@RequestMapping("/download")
-	protected void download(@RequestParam("fileName") String fileName,
-		                 	@RequestParam("item_id") String item_id,
+	protected void download(@RequestParam("file_Name") String file_Name,
+		                 	@RequestParam("file_id") String file_id,
+		                 	@RequestParam("file_path") String file_path,
 		                 	HttpServletRequest request, HttpServletResponse response) throws Exception {
 		OutputStream out = response.getOutputStream();
-		String filePath=CURR_IMAGE_REPO_PATH + fileName;
+		String url = request.getRequestURL().toString().replace(request.getRequestURI() , "");
+		
+		String filePath=  url + file_path + file_Name;
 		File image=new File(filePath);
 		
 		response.setContentType("application/octet-stream");
 		response.setHeader("Cache-Control","no-cache");
 		response.setHeader("Content-Transfer-Encoding", "binary");
-		response.addHeader("Content-disposition", "attachment; fileName="+ URLEncoder.encode(fileName,"UTF-8"));
+		response.addHeader("Content-disposition", "attachment; fileName="+ URLEncoder.encode(file_Name,"UTF-8"));
 		FileInputStream in=new FileInputStream(image); 
 		byte[] buffer=new byte[1024*8];
 		

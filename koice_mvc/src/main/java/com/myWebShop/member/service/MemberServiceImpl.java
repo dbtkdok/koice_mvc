@@ -44,6 +44,4 @@ public class MemberServiceImpl implements MemberService{
 		
 		memberDAO.addTexts(param);
 	}
-	
-	
 }

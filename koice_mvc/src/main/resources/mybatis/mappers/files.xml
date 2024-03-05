@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.files">
+	<resultMap type="fileVO" id="resultFiles">
+		<result property="file_id" column="file_id" />
+		<result property="file_no" column="file_no" />
+		<result property="file_name" column="file_name" />
+		<result property="file_path" column="file_path" />
+		<result property="file_type" column="file_type" />
+		<result property="file_size" column="file_size" />
+		<result property="created_at" column="created_at" />
+		<result property="origin_file_NM" column="origin_file_NM" />
+	</resultMap>
+	
+	<select id="file_list" resultType="fileVO" parameterType="fileVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM FN_POSTS_FILE
+		]]>
+	</select>
+	
+</mapper>

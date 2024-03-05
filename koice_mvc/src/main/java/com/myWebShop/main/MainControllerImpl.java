@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myWebShop.item.service.ItemService;
+import com.myWebShop.member.service.FileService;
 import com.myWebShop.member.service.MemberService;
+import com.myWebShop.member.vo.FileVO;
 import com.myWebShop.member.vo.MemberVO;
 
 @Controller("mainController")
@@ -30,6 +32,9 @@ public class MainControllerImpl implements MainController{
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	FileService fileService;
 	
 	@Autowired
 	ItemService itemService;
@@ -49,6 +54,19 @@ public class MainControllerImpl implements MainController{
 		
 		String viewName=(String)request.getAttribute("viewName");
 		mav.setViewName(viewName);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/consultation.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public  ModelAndView consultation(FileVO files, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		
+		String viewName=(String)request.getAttribute("viewName");
+		mav.setViewName(viewName);
+		
+		List<FileVO> fileVO = fileService.file_list(files);
+		mav.addObject("list", fileVO);
 		
 		return mav;
 	}
