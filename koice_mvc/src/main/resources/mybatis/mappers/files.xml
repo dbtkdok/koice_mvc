@@ -23,4 +23,13 @@
 		]]>
 	</select>
 	
+	<select id="file_one" resultType="fileVO" parameterType="fileVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM FN_POSTS_FILE
+		]]>
+		WHERE file_id = #{file_id}
+	</select>
+	
 </mapper>

@@ -1,9 +1,10 @@
 package com.myWebShop.commons.file;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,13 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.myWebShop.member.service.FileService;
 import com.myWebShop.member.service.MemberService;
+import com.myWebShop.member.vo.FileVO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -31,36 +35,67 @@ public class FileDownloadController {
 	@Autowired
 	MemberService memberService;
 	
+	@Autowired
+	FileService fileService;
+	
+	@Autowired
+    ResourceLoader resourceLoader;
+	
 	//private static String CURR_IMAGE_REPO_PATH = "/Users/leeyusang/Desktop/"; // mac
-	private static String CURR_IMAGE_REPO_PATH = "/resources/static/files/"; //실제서버용  
+	private static String CURR_IMAGE_REPO_PATH = "/static/files/"; //실제서버용  
 	
 	@RequestMapping("/download")
-	protected void download(@RequestParam("file_Name") String file_Name,
+	//protected void download(
+	public void download(
+							@RequestParam("file_Name") String file_Name,
 		                 	@RequestParam("file_id") String file_id,
 		                 	@RequestParam("file_path") String file_path,
 		                 	HttpServletRequest request, HttpServletResponse response) throws Exception {
-		OutputStream out = response.getOutputStream();
-		String url = request.getRequestURL().toString().replace(request.getRequestURI() , "");
+		FileVO param = new FileVO();
+		param.setFile_id(file_id);
+		String path = request.getRequestURL().toString().replace(request.getRequestURI() , "");
+		FileVO filevo = fileService.file_one(param);
 		
-		String filePath=  url + file_path + file_Name;
-		File image=new File(filePath);
+		URL url = null;
+		InputStream in = null;
+		OutputStream out = null;
 		
-		response.setContentType("application/octet-stream");
-		response.setHeader("Cache-Control","no-cache");
-		response.setHeader("Content-Transfer-Encoding", "binary");
-		response.addHeader("Content-disposition", "attachment; fileName="+ URLEncoder.encode(file_Name,"UTF-8"));
-		FileInputStream in=new FileInputStream(image); 
-		byte[] buffer=new byte[1024*8];
-		
-		while(true){
-			int count=in.read(buffer); //���ۿ� �о���� ���ڰ���
-			if(count==-1)  //������ �������� �����ߴ��� üũ
-				break;
-			out.write(buffer,0,count);
+		try {
+			String fileName = URLEncoder.encode(filevo.getOrigin_file_NM(), "UTF-8");
+			String header = request.getHeader("User-Agent");
+			
+			response.setHeader("Content-Disposition", "attachment; fileName="+ fileName);
+			response.setContentType("application/octet-stream");
+			response.setHeader("Cache-Control","no-cache");
+			response.setHeader("Content-Transfer-Encoding", "binary");
+			
+			out = response.getOutputStream();
+			
+			String fileUrl = path + file_path + file_Name;
+			String httpsResult = "";
+			
+			url = new URL(fileUrl);
+			
+			in = url.openStream();
+			
+			while(true) {
+				int count = in.read(); //���ۿ� �о���� ���ڰ���
+				if(count == -1) {
+					break;
+				}
+				
+				out.write(count);
+			}
+			
+			in.close();
+			out.close();
+			
+		} catch(Exception e) {
+			
+		} finally {
+			if(in != null) in.close();
+			if(out != null) out.close();
 		}
-
-		in.close();
-		out.close();
 	}
 	
 	@RequestMapping("/upload")

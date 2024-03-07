@@ -19,4 +19,12 @@ public class FileServiceImpl implements FileService{
 		// TODO Auto-generated method stub
 		return fileDAO.file_list(files);
 	}
+
+	@Override
+	public FileVO file_one(FileVO files) throws Exception {
+		// TODO Auto-generated method stub
+		return fileDAO.file_one(files);
+	}
+	
+	
 }

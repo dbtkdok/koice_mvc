@@ -49,7 +49,7 @@
 				<div class="col-sm-6 col-xl-3">
 				    <div class="card overflow-hidden rounded-2 br_gray">
 				      <div class="position-relative">
-				        <a href="javascript:fnDownload('${ii.file_path}', '${ii.file_id}', '${ii.file_name}')"><img src="${contextPath}/resources/static/img/file_icon.jpg" class="card-img-top rounded-0" alt="..."></a>
+				        <a href="/download?file_path=${ii.file_path}&file_id=${ii.file_id}&file_Name=${ii.file_name}"><img src="${contextPath}/resources/static/img/file_icon.jpg" class="card-img-top rounded-0" alt="..."></a>
 				        <!-- <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>  -->                     
 				      </div>
 				      <div class="card-body pt-3 p-4">

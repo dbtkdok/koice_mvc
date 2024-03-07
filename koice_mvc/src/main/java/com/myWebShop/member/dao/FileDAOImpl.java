@@ -20,4 +20,10 @@ public class FileDAOImpl implements FileDAO{
 		List<FileVO> file_list= sqlSession.selectList("mapper.files.file_list", files);
 		return file_list;
 	}
+
+	@Override
+	public FileVO file_one(FileVO files) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.files.file_one", files);
+	}
 }
