@@ -13,7 +13,7 @@
 		<result property="file_size" column="file_size" />
 		<result property="created_at" column="created_at" />
 		<result property="origin_file_NM" column="origin_file_NM" />
-	</resultMap>
+	</resultMap> 
 	
 	<select id="file_list" resultType="fileVO" parameterType="fileVO">
 		<![CDATA[
